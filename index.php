@@ -1,7 +1,7 @@
 <?php 
 
 require_once './vendor/autoload.php';
-
+$liste_fichier = array();
 
 
 // Rendu du template
@@ -13,26 +13,29 @@ $twig = new Twig_Environment($loader, [
 ]);
 
 // Routing
-$page = 'home';
-if (isset($_GET["page"])) {
-	$page = $_GET["page"];
+$var = 'index';
+if (isset($_GET["var"])) {
+	$var = $_GET["var"];
 }
 
-switch ($page) {
-	case 'index':
-		# code...
-		echo $twig->render('index.twig', array('page' => $page));
-		break;
-	case 'dossier':
-		# code...
-		echo $twig->render('dossier.twig', array('page' => $page));
-		break;
-	default:
-		# code...
-		header('HTTP/1.0 404 Not Found');
-		echo $twig->render('404.twig', array('page' => $page));
-		break;
-}
+if($mainDir = opendir(__DIR__)) {
+	while(false !== ($fichier = readdir($mainDir))) {
+		if($fichier != '.' && $fichier != '..' && $fichier != 'index.php') {
+			$liste_fichier[] = $fichier; 
+			// echo var_dump($list_fichier);
+		}
+	}
+
+};
+echo readdir($mainDir);
+
+# code...
+echo $twig->render('index.twig', array('var' => $var));
+	
+# code...
+echo $twig->render('grille.twig', array('liste_fichier' => implode( ", ", $liste_fichier)));
+	
+
 
 
 ?>
