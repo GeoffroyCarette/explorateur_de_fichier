@@ -6,7 +6,6 @@ $liste_fichier = array();
 // Rendu du template
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/php/templates');
 $twig = new Twig_Environment($loader, [
-	// 'cache' => __DIR__ . '/tmp'
 	'cache' => false
 ]);
 
