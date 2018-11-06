@@ -2,25 +2,37 @@
 
 require_once './vendor/autoload.php';
 
-$loader = new Twig_Loader_Filesystem('./php/templates');
-$twig = new Twig_Environment($loader);
 
-$bool = true;
 
-echo $twig->render('index.html.twig', array(
-	'title' => "Coucou"
-));
+// Rendu du template
+$loader = new Twig_Loader_Filesystem(__DIR__ . '/php/templates');
+$twig = new Twig_Environment($loader, [
+	// 'cache' => __DIR__ . '/tmp'
+	'cache' => false
 
-echo $twig->render('navbar.html.twig', array(
-	'name' => "Lucas",
-	'name3' => "Geoffroy",
-	'bool' => $bool
-));
+]);
 
-echo $twig->render('path_menu_left.html.twig', array(
-	'name2' => "Jules"
-	
-));
+// Routing
+$page = 'home';
+if (isset($_GET["page"])) {
+	$page = $_GET["page"];
+}
+
+switch ($page) {
+	case 'index':
+		# code...
+		echo $twig->render('index.twig', array('page' => $page));
+		break;
+	case 'dossier':
+		# code...
+		echo $twig->render('dossier.twig', array('page' => $page));
+		break;
+	default:
+		# code...
+		header('HTTP/1.0 404 Not Found');
+		echo $twig->render('404.twig', array('page' => $page));
+		break;
+}
 
 
 ?>
