@@ -1,4 +1,4 @@
 css/main.css
 vendor/
 composer.lock
-.sass-cache/
+../.sass-cache/

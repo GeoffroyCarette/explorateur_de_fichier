@@ -9,6 +9,13 @@
     content: "";
 }
 
+.img_sass:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .img_css::before {
     background-image: url('../img/icones/document.svg');
     background-size: 30px 30px;
@@ -18,6 +25,13 @@
     margin-bottom: -3px;
     margin-right: 8px;
     content: "";
+}
+
+.img_css:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
 }
 
 .img_img::before {
@@ -31,6 +45,13 @@
     content: "";
 }
 
+.img_img:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .img_js::before {
     background-image: url('../img/icones/document.svg');
     background-size: 30px 30px;
@@ -40,6 +61,13 @@
     margin-bottom: -3px;
     margin-right: 8px;
     content: "";
+}
+
+.img_js:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
 }
 
 .img_php::before {
@@ -53,6 +81,13 @@
     content: "";
 }
 
+.img_php:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .img_composer::before {
     background-image: url('../img/icones/visual-studio.svg');
     background-size: 30px 30px;
@@ -62,6 +97,13 @@
     margin-bottom: -3px;
     margin-right: 8px;
     content: "";
+}
+
+.img_composer:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
 }
 
 .img_compo_lock::before {
@@ -75,6 +117,13 @@
     content: "";
 }
 
+.img_compo_lock:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .img_index::before {
     background-image: url('../img/icones/visual-studio.svg');
     background-size: 30px 30px;
@@ -84,6 +133,13 @@
     margin-bottom: -3px;
     margin-right: 8px;
     content: "";
+}
+
+.img_index:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
 }
 
 .img_main::before {
@@ -97,6 +153,13 @@
     content: "";
 }
 
+.img_main:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .img_main_css::before {
     background-image: url('../img/icones/fichier_vide.svg');
     background-size: 30px 30px;
@@ -106,6 +169,13 @@
     margin-bottom: -3px;
     margin-right: 8px;
     content: "";
+}
+
+.img_main_css:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
 }
 
 .img_maquette::before {
@@ -119,6 +189,13 @@
     content: "";
 }
 
+.img_maquette:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .img_readme::before {
     background-image: url('../img/icones/fichier_css.svg');
     background-size: 30px 30px;
@@ -130,11 +207,23 @@
     content: "";
 }
 
+.img_readme:hover {
+    padding-left: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
 .background_aside{
     .aside_style{
+        z-index: 1;
         background-color: #3f3f3d;
         color: antiquewhite;
         margin-top: 20px;
         border-bottom-left-radius: 18px;
+        border-right: solid;
+        border-width: 1px;
+        border-color: black;
+        box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.507);
     }
 }
