@@ -13,21 +13,16 @@ window.onload = () => {
         .catch((error) => { console.log(error) })
 }
 
-
-// for (let i = 0; i < files.length; i++) {
-//     let f = files[i];
-//     // FETCH QUAND ON CLIQUE SUR UN DOSSIER / FICHIER
-//     f.addEventListener('click', (event) => {
-//         event.preventDefault();
-
-//     })
-// }
-
 // Fetch au click d'un fichier / dossier
 let url_array = [];
 window.addEventListener("click", (event) => {
     url_array.push(event.target.getAttribute("data-path"));
-
+    if (event.target.getAttribute("data-path") == "..") {
+        // url_array.pop();
+        // url_array.pop(); 
+        url_array.splice(url_array.length - 2, url_array.length);
+        console.table(url_array);
+    }
     if (event.target.classList.contains("fichier")) {
         console.log(event.target.getAttribute("data-path"));
         fetch(`/GitHub/ACS/explorateur_de_fichier/index.php?fichier=${arrayToUrl(url_array)}`)
@@ -42,4 +37,8 @@ window.addEventListener("click", (event) => {
 
 function arrayToUrl(array) {
     return array.toString().split(",").join("/");
+}
+
+function cleanUrl(url) {
+
 }
