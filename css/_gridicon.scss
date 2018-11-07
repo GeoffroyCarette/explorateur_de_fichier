@@ -3,3 +3,24 @@
     background-color: rgb(46, 45, 45);
     border-bottom-right-radius: 18px;
 }
+
+#grille {
+	
+}
+
+.fichier {
+	color: antiquewhite;
+}
+
+.elem {
+	
+	width: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	img {
+		height: 50%;
+		width: 50%;
+	}
+}
