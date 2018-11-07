@@ -1,3 +1,5 @@
- {% for fichier in liste_fichier %}
-        <p class="fichier" data-path="{{ fichier }}">{{ fichier }}</p>
+{# Boucle qui génère les éléments HTML #}
+
+ {% for fichier_arr in liste_fichier %}
+        <p class="fichier pr-2 pl-2 border border-primary" data-path="{{ fichier_arr }}">{{ fichier_arr }}</p>
  {% endfor %}

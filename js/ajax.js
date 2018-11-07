@@ -4,7 +4,7 @@ window.onload = () => {
     let grille;
 
     // FETCH INITIAL
-    fetch(`/GitHub/ACS/explorateur_de_fichier/index.php?fichier=./`)
+    fetch(`/explorateur_de_fichier/index.php?fichier=./`) // passe la var fichier = dossier actuel
         .then((response) => { return response.text() })
         .then((response) => {
             grille = document.querySelector("#grille");
@@ -25,10 +25,12 @@ window.onload = () => {
 //     })
 // }
 
+// Fetch au click d'un fichier / dossier
+
 window.addEventListener("click", (event) => {
 
-    if (event.target.getAttribute("class") === "fichier") {
-        fetch(`/GitHub/ACS/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
+    if (event.target.classList.contains("fichier")) {
+        fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
             .then((response) => { return response.text() })
             .then((response) => {
                 grille = document.querySelector("#grille");
