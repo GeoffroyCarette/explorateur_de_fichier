@@ -16,6 +16,7 @@ if (isset($_GET["fichier"])) { // Si la var existe
 			while(false !== ($fichier = readdir($mainDir))) { // fait la boucle tant qu'il n'y a pas d'erreurs
 				if($fichier != '.' && $fichier != 'index.php') { // gère les exceptions
 					$liste_fichier[] = $fichier; // ajoute chaque itération au tableau
+
 				} 
 			}
         };

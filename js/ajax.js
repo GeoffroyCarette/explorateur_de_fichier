@@ -14,7 +14,7 @@ window.onload = () => {
 
 // Fetch au click d'un fichier / dossier
 let url_array = ["."];
-window.addEventListener("click", (event) => {
+window.addEventListener("dblclick", (event) => {
     url_array.push(event.target.getAttribute("data-path"));
     if (event.target.getAttribute("data-path") == ".." && url_array.length > 1) {
         url_array.splice(url_array.length - 2, url_array.length);

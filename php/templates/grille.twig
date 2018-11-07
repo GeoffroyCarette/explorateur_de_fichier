@@ -2,7 +2,7 @@
 
  {% for fichier_arr in liste_fichier %}
  		<div class="elem">
- 			<img src="./img/icones/document.svg" alt="icone du dossier">
+ 			<img class="fichier icon" data-path="{{ fichier_arr }}" src="./img/icones/document.svg" alt="icone du dossier">
  			<p class="fichier pr-2 pl-2" data-path="{{ fichier_arr }}">{{ fichier_arr }}</p>
  		</div>
         
