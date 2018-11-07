@@ -1,10 +1,8 @@
 window.onload = () => {
-
     let files;
     let grille;
-
     // FETCH INITIAL
-    fetch(`/explorateur_de_fichier/index.php?fichier=./`) // passe la var fichier = dossier actuel
+    fetch(`/GitHub/ACS/explorateur_de_fichier/index.php?fichier=./`) // passe la var fichier = dossier actuel
         .then((response) => { return response.text() })
         .then((response) => {
             grille = document.querySelector("#grille");
@@ -26,11 +24,13 @@ window.onload = () => {
 // }
 
 // Fetch au click d'un fichier / dossier
-
+let url_array = [];
 window.addEventListener("click", (event) => {
+    url_array.push(event.target.getAttribute("data-path"));
 
     if (event.target.classList.contains("fichier")) {
-        fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
+        console.log(event.target.getAttribute("data-path"));
+        fetch(`/GitHub/ACS/explorateur_de_fichier/index.php?fichier=${arrayToUrl(url_array)}`)
             .then((response) => { return response.text() })
             .then((response) => {
                 grille = document.querySelector("#grille");
@@ -39,3 +39,7 @@ window.addEventListener("click", (event) => {
             .catch((error) => { console.log(error) })
     }
 })
+
+function arrayToUrl(array) {
+    return array.toString().split(",").join("/");
+}
