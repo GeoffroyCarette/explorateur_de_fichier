@@ -14,7 +14,13 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
 }
+
+.img_sass {
+    transition: 0.5s;
+}
+
 
 .img_css::before {
     background-image: url('../img/icones/document.svg');
@@ -32,6 +38,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_css {
+    transition: 0.5s;
 }
 
 .img_img::before {
@@ -50,6 +61,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_img {
+    transition: 0.5s;
 }
 
 .img_js::before {
@@ -68,6 +84,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_js {
+    transition: 0.5s;
 }
 
 .img_php::before {
@@ -86,6 +107,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_php {
+    transition: 0.5s;
 }
 
 .img_composer::before {
@@ -104,6 +130,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_composer {
+    transition: 0.5s;
 }
 
 .img_compo_lock::before {
@@ -122,6 +153,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_compo_lock {
+    transition: 0.5s;
 }
 
 .img_index::before {
@@ -140,6 +176,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_index {
+    transition: 0.5s;
 }
 
 .img_main::before {
@@ -158,6 +199,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_main {
+    transition: 0.5s;
 }
 
 .img_main_css::before {
@@ -176,6 +222,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_main_css {
+    transition: 0.5s;
 }
 
 .img_maquette::before {
@@ -194,6 +245,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_maquette {
+    transition: 0.5s;
 }
 
 .img_readme::before {
@@ -212,6 +268,11 @@
     cursor: pointer;
     color: black;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+.img_readme {
+    transition: 0.5s;
 }
 
 .background_aside{
