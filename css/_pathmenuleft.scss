@@ -130,13 +130,11 @@
     content: "";
 }
 
-main{
-    .container {
-        padding: 0;
-    }
-
+.background_aside{
     .aside_style{
         background-color: #3f3f3d;
         color: antiquewhite;
+        margin-top: 20px;
+        border-bottom-left-radius: 18px;
     }
 }
