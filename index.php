@@ -6,22 +6,24 @@ $liste_fichier = array();
 // Rendu du template
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/php/templates');
 $twig = new Twig_Environment($loader, [
+	// 'cache' => __DIR__ . '/tmp'
 	'cache' => false
 ]);
 
 // Routing
-if (isset($_GET["fichier"])) {
-		if($mainDir = opendir($_GET["fichier"])) {
-			while(false !== ($fichier = readdir($mainDir))) {
-				if($fichier != '.' && $fichier != '..' && $fichier != 'index.php') {
-					$liste_fichier[] = $fichier; 
+if (isset($_GET["fichier"])) { // Si la var existe
+		if($mainDir = opendir($_GET["fichier"])) { // Si le répertoire existe
+			while(false !== ($fichier = readdir($mainDir))) { // fait la boucle tant qu'il n'y a pas d'erreurs
+				if($fichier != '..' && $fichier != 'index.php') { // gère les exceptions
+					$liste_fichier[] = $fichier; // ajoute chaque itération au tableau
 				}
 			}
-		};
+        };
+        // appelle grille.twig et lui passe le tableau
 		echo $twig->render('grille.twig', array('liste_fichier' => $liste_fichier));
 	
 } else {
-	echo $twig->render("index.twig");
+	echo $twig->render("index.twig"); // appelle l'index par défaut
 }
 
 	
