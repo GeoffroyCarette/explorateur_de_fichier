@@ -37,3 +37,15 @@ function arrayToUrl(array) {
     return array.toString().split(",").join("/");
 }
 
+window.addEventListener("click", (event) => {
+    if (event.target.classList.contains("aside-elem")) {
+         fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
+            .then((response) => { return response.text() })
+            .then((response) => {
+                grille = document.querySelector("#grille");
+                grille.innerHTML = response;
+            })
+            .catch((error) => { console.log(error) })
+    }
+    
+})
