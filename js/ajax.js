@@ -64,5 +64,21 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
         })
         .catch((error) => { console.log(error) })
    }
+
+   else if (event.target.classList.contains("back")) {
+    if (url_array.length > 1) {
+        url_array.splice(url_array.length - 1, url_array.length);
+    } else if (url_array.length == 1) {
+        url_array.pop();
+    }
+    fetch(`/explorateur_de_fichier/index.php?fichier=${arrayToUrl(url_array)}`)
+    .then((response) => { return response.text() })
+    .then((response) => {
+        grille = document.querySelector("#grille");
+        grille.innerHTML = response;
+        divPath.textContent = arrayToUrl(url_array);
+    })
+    .catch((error) => { console.log(error) })
+}
     
 })
