@@ -101,11 +101,14 @@ function attributeCorrectIcon() {
                 icons[i].setAttribute('src', "./img/icones/fichier_scss.svg");
                 break;
             case "svg":
-                icons[i].setAttribute('src', "./img/icones/svg_logo.svg");
+                icons[i].setAttribute('src', "./img/icones/fichier_svg_logo.svg");
                 break;
             case "twig":
                 icons[i].setAttribute('src', "./img/icones/twig_logo.svg");
-                break;                 
+                break;
+            case "js":
+                icons[i].setAttribute('src', "./img/icones/fichier_js.svg");
+                break;                   
             default:
                 
                 break;
