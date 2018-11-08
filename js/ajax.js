@@ -21,6 +21,7 @@ function arrayToUrl(array) {
 
 window.addEventListener("click", (event) => { // Si on clique sur un élément à gauche , fais un fetch
     if (event.target.classList.contains("aside-elem")) {
+        url_array = ["."];
         url_array.push(event.target.getAttribute("data-path"));
         renderResponse(event.target.getAttribute("data-path"));
     } else if (event.target.classList.contains("home")) {
@@ -37,8 +38,8 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
 
 })
 
-function renderResponse(data, home) {
-    fetch(`/explorateur_de_fichier/index.php?fichier=${data}&home=${home}`)
+function renderResponse(data) {
+    fetch(`/explorateur_de_fichier/index.php?fichier=${data}`)
         .then((response) => { return response.json() })
         .then((response) => {
             grille = document.querySelector("#grille");

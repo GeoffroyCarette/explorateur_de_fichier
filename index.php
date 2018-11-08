@@ -12,7 +12,7 @@ $twig = new Twig_Environment($loader, [
 ]);
 
 // Routing
-if (isset($_GET["fichier"]) && isset($_GET["home"])) { // Si la var existe
+if (isset($_GET["fichier"])) { // Si la var existe
 	// echo ($_GET["fichier"]);
 		$chemin = realpath($_GET["fichier"]); // On assigne à une variable le chemin de la variable GET
 		$mainDir = opendir($chemin); // On ouvre le dossier/fichier via son chemin
