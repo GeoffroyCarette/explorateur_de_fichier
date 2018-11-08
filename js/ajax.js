@@ -25,6 +25,7 @@ window.addEventListener("dblclick", (event) => { // Si on double click sur un ic
     } else if (event.target.getAttribute("data-path") == ".." && url_array.length == 1) {
         url_array.pop();
     }
+
     if (event.target.classList.contains("fichier")) {
         // console.log(event.target.getAttribute("data-path"));
         fetch(`/explorateur_de_fichier/index.php?fichier=${arrayToUrl(url_array)}`)
@@ -53,5 +54,16 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
             })
             .catch((error) => { console.log(error) })
     }
+
+    else if (event.target.classList.contains("home")) {
+        fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
+        .then((response) => { return response.text() })
+        .then((response) => {
+            grille = document.querySelector("#grille");
+            grille.innerHTML = response;
+            url_array.splice(1 , url_array.length);
+        })
+        .catch((error) => { console.log(error) })
+   }
     
 })
