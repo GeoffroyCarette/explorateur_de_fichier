@@ -1,16 +1,7 @@
 window.onload = () => { // Au chargement de la page, fais un premier fetch 
     let files;
     let grille;
-    // FETCH INITIAL
-    fetch(`/explorateur_de_fichier/index.php?fichier=./`) // passe la var fichier = dossier actuel
-        .then((response) => { return response.text() })
-        .then((response) => {
-            grille = document.querySelector("#grille");
-            grille.innerHTML = response;
-            files = document.querySelectorAll(".fichier");
-            attributeCorrectIcon();
-        })
-        .catch((error) => { console.log(error) })
+    renderResponse("./");
 }
 
 let divPath = document.querySelector(".div_path");
@@ -23,18 +14,8 @@ window.addEventListener("dblclick", (event) => { // Si on double click sur un ic
     } else if (event.target.getAttribute("data-path") == ".." && url_array.length == 1) {
         url_array.pop();
     }
-
     if (event.target.classList.contains("fichier")) {
-        // console.log(event.target.getAttribute("data-path"));
-        fetch(`/explorateur_de_fichier/index.php?fichier=${arrayToUrl(url_array)}`)
-            .then((response) => { return response.text() })
-            .then((response) => {
-                grille = document.querySelector("#grille");
-                grille.innerHTML = response;
-                divPath.textContent = arrayToUrl(url_array);
-                attributeCorrectIcon();
-            })
-            .catch((error) => { console.log(error) })
+        renderResponse(arrayToUrl(url_array));
     }
 })
 
@@ -45,66 +26,40 @@ function arrayToUrl(array) {
 
 window.addEventListener("click", (event) => { // Si on clique sur un élément à gauche , fais un fetch
     if (event.target.classList.contains("aside-elem")) {
-        fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
-            .then((response) => { return response.text() })
-            .then((response) => {
-                grille = document.querySelector("#grille");
-                grille.innerHTML = response;
-                divPath.textContent = "./" + event.target.getAttribute("data-path");
-                attributeCorrectIcon();
-            })
-            .catch((error) => { console.log(error) })
+        renderResponse(event.target.getAttribute("data-path"));
     } else if (event.target.classList.contains("home")) {
-        fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
-            .then((response) => { return response.text() })
-            .then((response) => {
-                grille = document.querySelector("#grille");
-                grille.innerHTML = response;
-                url_array.splice(1, url_array.length);
-                divPath.textContent = "./";
-                attributeCorrectIcon();
-            })
-            .catch((error) => { console.log(error) })
+        renderResponse(event.target.getAttribute("data-path"));
+    } else if (event.target.classList.contains("back")) {
+        if (url_array.length > 1) {
+            url_array.splice(url_array.length - 1, url_array.length);
+        } else if (url_array.length == 1) {
+            url_array.pop();
+        }
+        renderResponse(arrayToUrl(url_array));
     }
 
-    else if (event.target.classList.contains("home")) {
-        fetch(`/explorateur_de_fichier/index.php?fichier=${event.target.getAttribute("data-path")}`)
-        .then((response) => { return response.text() })
-        .then((response) => {
-            grille = document.querySelector("#grille");
-            grille.innerHTML = response;
-            url_array.splice(1 , url_array.length);
-            divPath.textContent = "./";
-        })
-        .catch((error) => { console.log(error) })
-   }
-
-   else if (event.target.classList.contains("back")) {
-    if (url_array.length > 1) {
-        url_array.splice(url_array.length - 1, url_array.length);
-    } else if (url_array.length == 1) {
-        url_array.pop();
-    }
-    fetch(`/explorateur_de_fichier/index.php?fichier=${arrayToUrl(url_array)}`)
-    .then((response) => { return response.text() })
-    .then((response) => {
-        grille = document.querySelector("#grille");
-        grille.innerHTML = response;
-        divPath.textContent = arrayToUrl(url_array);
-    })
-    .catch((error) => { console.log(error) })
-}
-    
 })
 
+function renderResponse(data) {
+    fetch(`/explorateur_de_fichier/index.php?fichier=${data}`)
+        .then((response) => { return response.json() })
+        .then((response) => {
+            grille = document.querySelector("#grille");
+            grille.innerHTML = response.grille;
+            divPath.innerHTML = response.chemin;
+            attributeCorrectIcon();
+        })
+        .catch((error) => { console.log(error) })
+}
+
+// Fonction qui attribue un icone en fonction de l'extension 
 function attributeCorrectIcon() {
     let icons = document.querySelectorAll('.icon');
     for (let i = 0; i < icons.length; i++) {
-        let extension = icons[i].getAttribute('data-path').split(".")[1];
-        let iconPath = icons[i].getAttribute('src');
-
+        let extension = icons[i].getAttribute('data-path').split(".")[1]; // On découpe la chaine afin de récupérer l'extension
         switch (extension) {
             case undefined:
+                // On change le chemin de l'image en fonction de son extension
                 icons[i].setAttribute('src', "./img/icones/document.svg");
                 break;
             case "lock":
@@ -120,7 +75,7 @@ function attributeCorrectIcon() {
                 icons[i].setAttribute('src', "./img/icones/git_logo.svg");
                 break;
             case "json":
-                icons[i].setAttribute('src',  "./img/icones/json_logo.svg");
+                icons[i].setAttribute('src', "./img/icones/json_logo.svg");
                 break;
             case "css":
                 icons[i].setAttribute('src', "./img/icones/fichier_css.svg");
@@ -129,13 +84,19 @@ function attributeCorrectIcon() {
                 icons[i].setAttribute('src', "./img/icones/fichier_scss.svg");
                 break;
             case "svg":
-                icons[i].setAttribute('src', "./img/icones/svg_logo.svg");
+                icons[i].setAttribute('src', "./img/icones/fichier_svg_logo.svg");
                 break;
             case "twig":
                 icons[i].setAttribute('src', "./img/icones/twig_logo.svg");
-                break;                 
+                break;
+            case "php":
+                icons[i].setAttribute('src', "./img/icones/php_logo.svg");
+                break;
+            case "js":
+                icons[i].setAttribute('src', "./img/icones/fichier_js.svg");
+                break;                   
             default:
-                
+
                 break;
         }
     }
