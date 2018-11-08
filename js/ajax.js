@@ -84,7 +84,7 @@ function attributeCorrectIcon() {
                 icons[i].setAttribute('src', "./img/icones/fichier_scss.svg");
                 break;
             case "svg":
-                icons[i].setAttribute('src', "./img/icones/svg_logo.svg");
+                icons[i].setAttribute('src', "./img/icones/fichier_svg_logo.svg");
                 break;
             case "twig":
                 icons[i].setAttribute('src', "./img/icones/twig_logo.svg");
@@ -92,6 +92,9 @@ function attributeCorrectIcon() {
             case "php":
                 icons[i].setAttribute('src', "./img/icones/php_logo.svg");
                 break;
+            case "js":
+                icons[i].setAttribute('src', "./img/icones/fichier_js.svg");
+                break;                   
             default:
 
                 break;
