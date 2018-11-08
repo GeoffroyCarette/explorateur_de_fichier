@@ -17,9 +17,6 @@ let url_array = ["."];
 
 window.addEventListener("dblclick", (event) => { // Si on double click sur un icon, fais un fetch
     url_array.push(event.target.getAttribute("data-path"));
-
-    console.log(url_array);
-
     if (event.target.getAttribute("data-path") == ".." && url_array.length > 1) {
         url_array.splice(url_array.length - 2, url_array.length);
     } else if (event.target.getAttribute("data-path") == ".." && url_array.length == 1) {
@@ -51,6 +48,7 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
             .then((response) => {
                 grille = document.querySelector("#grille");
                 grille.innerHTML = response;
+                divPath.textContent = "./" + event.target.getAttribute("data-path");
             })
             .catch((error) => { console.log(error) })
     }
@@ -62,6 +60,7 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
             grille = document.querySelector("#grille");
             grille.innerHTML = response;
             url_array.splice(1 , url_array.length);
+            divPath.textContent = "./";
         })
         .catch((error) => { console.log(error) })
    }
