@@ -12,9 +12,13 @@ $twig = new Twig_Environment($loader, [
 ]);
 
 // Routing
-if (isset($_GET["fichier"])) { // Si la var existe
+if (isset($_GET["fichier"]) && isset($_GET["home"])) { // Si la var existe
+	// echo ($_GET["fichier"]);
 		$chemin = realpath($_GET["fichier"]); // On assigne à une variable le chemin de la variable GET
 		$mainDir = opendir($chemin); // On ouvre le dossier/fichier via son chemin
+		if ($_GET["home"] == "true") {
+			$chemin = "";
+		}
 		if ($mainDir) { // Si le répertoire existe
 			while(false !== ($fichier = readdir($mainDir))) { // fait la boucle tant qu'il n'y a pas d'erreurs
 				if($fichier != '.' && $fichier != 'index.php') { // gère les exceptions
