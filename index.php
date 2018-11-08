@@ -18,7 +18,7 @@ if (isset($_GET["fichier"]) && isset($_GET["home"])) { // Si la var existe
 		$mainDir = opendir($chemin); // On ouvre le dossier/fichier via son chemin
 		if ($mainDir) { // Si le répertoire existe
 			while(false !== ($fichier = readdir($mainDir))) { // fait la boucle tant qu'il n'y a pas d'erreurs
-				if($fichier != '.' && $fichier != 'index.php') { // gère les exceptions
+				if($fichier != '.' && $fichier != '..' && $fichier != 'index.php') { // gère les exceptions
 					$liste_fichier[] = $fichier; // ajoute chaque itération au tableau
 
 				} 
