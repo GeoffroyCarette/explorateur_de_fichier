@@ -28,7 +28,9 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
     if (event.target.classList.contains("aside-elem")) {
         renderResponse(event.target.getAttribute("data-path"), "false");
     } else if (event.target.classList.contains("home")) {
-        renderResponse(event.target.getAttribute("data-path"), "true");
+        url_array = ["."]; 
+        renderResponse(arrayToUrl(url_array), "true")
+        // renderResponse(event.target.getAttribute("data-path"), "true");
     } else if (event.target.classList.contains("back")) {
         if (url_array.length > 1) {
             url_array.splice(url_array.length - 1, url_array.length);
