@@ -24,10 +24,13 @@ if (isset($_GET["fichier"])) { // Si la var existe
 			}
         };
         // appelle grille.twig et lui passe le tableau
-		echo $twig->render('grille.twig', array('liste_fichier' => $liste_fichier));
+		$grille = $twig->render('grille.twig', array('liste_fichier' => $liste_fichier));
+		$nav =  $twig->render('nav.twig', array('chemin' => $chemin));
+        $sendToJS = array('grille' => $grille, 'chemin' => $nav);
+        echo json_encode($sendToJS);
+
 } else {
 	echo $twig->render("index.twig"); // appelle l'index par défaut
 }
-
 
 ?>
