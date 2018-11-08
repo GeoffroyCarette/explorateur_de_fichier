@@ -13,8 +13,9 @@ $twig = new Twig_Environment($loader, [
 
 // Routing
 if (isset($_GET["fichier"])) { // Si la var existe
-	// echo ($_GET["fichier"]);
+		if (is_dir($_GET["fichier"])) {
 		$chemin = realpath($_GET["fichier"]); // On assigne à une variable le chemin de la variable GET
+
 		$mainDir = opendir($chemin); // On ouvre le dossier/fichier via son chemin
 		if ($mainDir) { // Si le répertoire existe
 			while(false !== ($fichier = readdir($mainDir))) { // fait la boucle tant qu'il n'y a pas d'erreurs
@@ -23,7 +24,12 @@ if (isset($_GET["fichier"])) { // Si la var existe
 
 				} 
 			}
-        };
+		}
+		
+	}
+	else {
+		$file = file_get_contents($_GET["fichier"]);
+	}
         // appelle grille.twig et lui passe le tableau
 		$grille = $twig->render('grille.twig', array('liste_fichier' => $liste_fichier));
 		$nav =  $twig->render('nav.twig', array('chemin' => $chemin));
