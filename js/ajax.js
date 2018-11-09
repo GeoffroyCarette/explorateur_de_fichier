@@ -9,11 +9,6 @@ let url_array = ["."];
 
 window.addEventListener("dblclick", (event) => { // Si on double click sur un icon, fais un fetch
     url_array.push(event.target.getAttribute("data-path"));
-    if (event.target.getAttribute("data-path") == ".." && url_array.length > 1) {
-        url_array.splice(url_array.length - 2, url_array.length);
-    } else if (event.target.getAttribute("data-path") == ".." && url_array.length == 1) {
-        url_array.pop();
-    }
     if (event.target.classList.contains("fichier")) {
         renderResponse(arrayToUrl(url_array));
     }
@@ -26,9 +21,12 @@ function arrayToUrl(array) {
 
 window.addEventListener("click", (event) => { // Si on clique sur un élément à gauche , fais un fetch
     if (event.target.classList.contains("aside-elem")) {
+        url_array = ["."];
+        url_array.push(event.target.getAttribute("data-path"));
         renderResponse(event.target.getAttribute("data-path"));
     } else if (event.target.classList.contains("home")) {
-        renderResponse(event.target.getAttribute("data-path"));
+        url_array = ["."];
+        renderResponse("./");
     } else if (event.target.classList.contains("back")) {
         if (url_array.length > 1) {
             url_array.splice(url_array.length - 1, url_array.length);
