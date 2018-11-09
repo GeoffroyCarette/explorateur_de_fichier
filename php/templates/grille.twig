@@ -1,3 +1,6 @@
+{% if isFile == false %}
+
+
 {% for fichier_arr in liste_fichier %}
 
 	<div class="elem">
@@ -6,3 +9,9 @@
 	</div>
 
 {% endfor %}
+
+{% else %}
+
+	<div class="elem">{{file}}</div>
+
+{% endif %}
