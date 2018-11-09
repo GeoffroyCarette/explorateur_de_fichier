@@ -6,9 +6,17 @@ window.onload = () => { // Au chargement de la page, fais un premier fetch
 
 let divPath = document.querySelector(".div_path");
 let url_array = ["."];
+let url_array_stock = [""];
+let previous_path;
+let save_nav = [];
 
 window.addEventListener("dblclick", (event) => { // Si on double click sur un icon, fais un fetch
+    // Ajoute le fichier au chemin
+
     url_array.push(event.target.getAttribute("data-path"));
+    url_array_stock.push(event.target.getAttribute("data-path"));
+    console.log("double clique  : url_array_stock => " + url_array_stock);
+    console.log("double clique  : url_array => " + url_array);
     if (event.target.classList.contains("fichier")) {
         renderResponse(arrayToUrl(url_array));
     }
@@ -21,19 +29,34 @@ function arrayToUrl(array) {
 
 window.addEventListener("click", (event) => { // Si on clique sur un élément à gauche , fais un fetch
     if (event.target.classList.contains("aside-elem")) {
+        // Réinitialise le chemin à la racine
         url_array = ["."];
+        url_array_stock = ["."];
+        // Ajoute l'élément à gauche dans le chemin 
         url_array.push(event.target.getAttribute("data-path"));
+        url_array_stock.push(event.target.getAttribute("data-path"));
+        console.log("simple clique : url_array => " + url_array);
+        console.log("simple clique : url_array_stock => " + url_array_stock);
         renderResponse(event.target.getAttribute("data-path"));
     } else if (event.target.classList.contains("home")) {
         url_array = ["."];
         renderResponse("./");
     } else if (event.target.classList.contains("back")) {
         if (url_array.length > 1) {
-            url_array.splice(url_array.length - 1, url_array.length);
-        } else if (url_array.length == 1) {
+
             url_array.pop();
+            console.log("bouton back : url_array => " + url_array);
+            console.log("bouton back : url_array_stock => " + url_array_stock);
         }
         renderResponse(arrayToUrl(url_array));
+    } else if (event.target.classList.contains("next")) {
+
+        url_array.push(url_array_stock[url_array.length]);
+        console.log("bouton next : url_array_stock => " + url_array_stock);
+        console.log("bouton next : url_array => " + url_array);
+        renderResponse(arrayToUrl(url_array))
+
+
     }
 
 })
@@ -92,7 +115,7 @@ function attributeCorrectIcon() {
                 break;
             case "js":
                 icons[i].setAttribute('src', "./img/icones/fichier_js.svg");
-                break;                   
+                break;
             default:
 
                 break;
