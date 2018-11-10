@@ -1,7 +1,7 @@
 window.onload = () => { // Au chargement de la page, fais un premier fetch 
     let files;
     let grille;
-    renderResponse("./");
+    renderResponse(".");
 }
 
 let divPath = document.querySelector(".div_path");
@@ -43,7 +43,7 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
         // renderResponse(event.target.getAttribute("data-path"));
     } else if (event.target.classList.contains("home")) {
         url_array = ["."];
-        renderResponse("./");
+        renderResponse(".");
     } else if (event.target.classList.contains("back")) {
         if (url_array.length > 1) {
 
