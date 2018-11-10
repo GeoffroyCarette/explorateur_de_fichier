@@ -46,9 +46,9 @@ if (isset($_GET["fichier"])) { // 1
 
 	if (is_dir($_GET["fichier"]) && !$urlIsSecure) { // 1
 		$chemin = realpath($_GET["fichier"]); 
-		// $splitString = explode("/", $chemin);
-		// $spliceArr = array_splice($splitString, 5 , count($splitString));
-		// $chemin = implode("/", $spliceArr);
+		$splitString = explode("/", $chemin);
+		$spliceArr = array_splice($splitString, 5 , count($splitString));
+		$chemin = implode("/", $spliceArr);
 		$liste_fichier = listFilesOfFolderIntoArray($_GET["fichier"]); // 2
 		$grille = $twig->render('grille.twig', array('liste_fichier' => $liste_fichier)); // 3
 		$nav =  $twig->render('nav.twig', array('chemin' => $chemin)); // 3
