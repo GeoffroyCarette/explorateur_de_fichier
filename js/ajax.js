@@ -25,6 +25,25 @@ window.addEventListener("dblclick", (event) => { // Si on double click sur un ic
     }
 })
 
+// Remplace le double click pour mobile
+
+window.addEventListener("touchstart", (event) => { 
+
+        // S'assure que l'on ne puisse pas double cliquer sur les boutons de navigation et l'arborescence
+        if (containsClass("fichier")) {
+
+            // Ajoute le fichier au chemin
+            isDir(event.target.getAttribute("data-path"), false);
+            // Render
+            renderResponse(arrayToUrl(url_array));
+    
+            console.log("double clique  : url_array_stock => " + url_array_stock);
+            console.log("double clique  : url_array => " + url_array);
+        }
+
+})
+
+
 /* Fonction qui permet de transformer notre tableau contenant les data-path cliqué en une url valide */
 function arrayToUrl(array) {
     return array.toString().split(",").join("/");
