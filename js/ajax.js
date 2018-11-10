@@ -55,11 +55,13 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
         }
         renderResponse(arrayToUrl(url_array));
     } else if (containsClass("next")) {
-
-        url_array.push(url_array_stock[url_array.length]);
-        console.log("bouton next : url_array_stock => " + url_array_stock);
-        console.log("bouton next : url_array => " + url_array);
-        renderResponse(arrayToUrl(url_array))
+        // Ne push que s'il y a quelque chose à pusher
+        if (url_array.length < url_array_stock.length) {
+            url_array.push(url_array_stock[url_array.length]);
+            console.log("bouton next : url_array_stock => " + url_array_stock);
+            console.log("bouton next : url_array => " + url_array);
+            renderResponse(arrayToUrl(url_array))
+        }
 
 
     }
