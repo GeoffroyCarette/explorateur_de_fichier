@@ -76,8 +76,8 @@ function renderResponse(data) {
         .then((response) => {
             grille = document.querySelector("#grille");
             grille.innerHTML = response.grille;
-            let shortPath = response.chemin.split("/").splice(4).join("/");
-            divPath.innerHTML = shortPath;
+            // let shortPath = response.chemin.split("/").splice(4).join("/");
+            divPath.innerHTML = response.chemin;
             attributeCorrectIcon();
         })
         .catch((error) => {
