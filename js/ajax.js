@@ -13,8 +13,10 @@ let save_nav = [];
 window.addEventListener("dblclick", (event) => { // Si on double click sur un icon, fais un fetch
     // Ajoute le fichier au chemin
 
-    url_array.push(event.target.getAttribute("data-path"));
-    url_array_stock.push(event.target.getAttribute("data-path"));
+    isDir(event.target.getAttribute("data-path"), false);
+
+    // url_array.push(event.target.getAttribute("data-path"));
+    // url_array_stock.push(event.target.getAttribute("data-path"));
     console.log("double clique  : url_array_stock => " + url_array_stock);
     console.log("double clique  : url_array => " + url_array);
     if (event.target.classList.contains("fichier")) {
@@ -33,11 +35,12 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
         url_array = ["."];
         url_array_stock = ["."];
         // Ajoute l'élément à gauche dans le chemin 
-        url_array.push(event.target.getAttribute("data-path"));
-        url_array_stock.push(event.target.getAttribute("data-path"));
+        isDir(event.target.getAttribute("data-path"), true);
+        // url_array.push(event.target.getAttribute("data-path"));
+        // url_array_stock.push(event.target.getAttribute("data-path"));
         console.log("simple clique : url_array => " + url_array);
         console.log("simple clique : url_array_stock => " + url_array_stock);
-        renderResponse(event.target.getAttribute("data-path"));
+        // renderResponse(event.target.getAttribute("data-path"));
     } else if (event.target.classList.contains("home")) {
         url_array = ["."];
         renderResponse("./");
@@ -67,10 +70,23 @@ function renderResponse(data) {
         .then((response) => {
             grille = document.querySelector("#grille");
             grille.innerHTML = response.grille;
-            divPath.innerHTML = response.chemin;
+            let shortPath = response.chemin.split("/").splice(4).join("/");
+            divPath.innerHTML = shortPath;
             attributeCorrectIcon();
         })
         .catch((error) => { console.log(error) })
+}
+
+function isDir (path, aside) {
+    console.log(path.split("."));
+    if (path.split(".").length <= 1) {
+        url_array.push(path);
+        url_array_stock.push(path);
+    }
+
+    if (aside) {
+        renderResponse(event.target.getAttribute("data-path"));
+    }
 }
 
 // Fonction qui attribue un icone en fonction de l'extension 
