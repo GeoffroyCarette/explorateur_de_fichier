@@ -1,15 +1,17 @@
-{% extends "index.twig" %}
+{% if isFile == false %}
 
 
-{% block display_start %}
+{% for fichier_arr in liste_fichier %}
 
-{% if liste_fichier != "" %}
-	<p>{{ liste_fichier }}</p>
-	{% if liste_fichier == ""  %}
+	<div draggable='true' class="elem">
+	<img draggable='false' class="fichier icon" data-path="{{fichier_arr}}" src="./img/icones/document.svg" alt="icone du dossier">
+	<p class="fichier pr-2 pl-2" data-path="{{fichier_arr}}">{{fichier_arr}}</p>
+	</div>
 
-	{% endif %}
+{% endfor %}
+
+{% else %}
+
+	<div class="elem">{{file}}</div>
 
 {% endif %}
-
-{% endblock %}	
-

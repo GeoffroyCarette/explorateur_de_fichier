@@ -1,0 +1,28 @@
+.explo_style {
+    margin-top: -20px;
+    background-color: rgb(46, 45, 45);
+    border-bottom-right-radius: 18px;
+}
+
+.fichier {
+	color: antiquewhite;
+}
+
+.elem {
+	transition: opacity 0.5s;
+	width: 150px;
+	max-height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	img {
+		height: 50%;
+		width: 50%;
+	}
+}
+
+.fichier:hover {
+	cursor: pointer;
+}
+
