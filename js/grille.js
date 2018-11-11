@@ -23,8 +23,3 @@ window.addEventListener("dragend", (event) => {
 	}
 
 })
-document.querySelector('*[draggable="true"]').addEventListener('dragstart', function(e) {
-
-    e.dataTransfer.setDragImage(dragImg, 40, 40); // Une position de 40x40 pixels centrera l'image (de 80x80 pixels) sous le curseur
-
-});

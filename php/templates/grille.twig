@@ -1,10 +1,7 @@
-{% if isFile == false %}
-
-
 {% for fichier_arr in liste_fichier %}
 
-	<div draggable='true' class="elem">
-	<img draggable='false' class="fichier icon" data-path="{{fichier_arr}}" src="./img/icones/document.svg" alt="icone du dossier">
+	<div class="elem">
+	<img class="fichier icon" data-path="{{fichier_arr}}" src="./img/icones/document.svg" alt="icone du dossier">
 	<p class="fichier pr-2 pl-2" data-path="{{fichier_arr}}">{{fichier_arr}}</p>
 	<div class="elem">
 	<img class="fichier icon" data-path="{{fichier_arr}}" src="./img/icones/document.svg" alt="icone du dossier">
@@ -12,9 +9,3 @@
 	</div>
 
 {% endfor %}
-
-{% else %}
-
-	<div class="elem">{{file}}</div>
-
-{% endif %}
