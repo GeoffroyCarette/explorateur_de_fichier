@@ -44,10 +44,11 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	background: grey;
-	border-radius: 5px;
+	border-radius: 4px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
