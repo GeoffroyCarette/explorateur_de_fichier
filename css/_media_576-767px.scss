@@ -1,0 +1,35 @@
+@media (min-width: 576px) and (max-width: 767px) {
+    .background_nav {
+        height: 5rem;
+        .div_path::-webkit-scrollbar {
+            display: none;
+        }
+
+        .div_path {
+            overflow-x: scroll;
+            margin: auto;
+            z-index: 1;
+        }
+    }
+
+    .aside_style {
+        display: none;
+    }
+
+    .explo_style {
+        max-height: 59vh;
+        border-bottom-left-radius: 18px;
+        margin-top: -101px!important;
+    }
+
+    .center_top {
+        img {
+            width: 30px;
+        }
+    }
+
+    .elem {
+        width: 130px;
+        max-height: 94px;
+    }
+}
