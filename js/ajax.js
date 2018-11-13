@@ -54,7 +54,16 @@ function arrayToUrl(array) {
 
 // Fonction au click
 
-window.addEventListener("click", (event) => { 
+window.addEventListener("click", (event) => {
+
+    let allFichier = document.querySelectorAll('.fichier');
+
+    for (i=0; i<allFichier.length; i++) {
+        allFichier[i].parentNode.classList.remove("backgroundParent");
+    }
+    if (event.target.classList.contains("fichier")){
+        event.target.parentNode.classList.add("backgroundParent"); 
+    }
     // Si on clique sur un élément à gauche , fais un fetch
     if (containsClass("aside-elem")) {
         // Réinitialise le chemin à la racine
