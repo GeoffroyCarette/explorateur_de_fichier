@@ -36,7 +36,7 @@ window.addEventListener("dblclick", (event) => {
 window.addEventListener("touchstart", (event) => {
     // S'assure que l'on ne puisse pas double cliquer sur les boutons de navigation et l'arborescence
     if (containsClass("fichier")) {
-
+        transitionOpacity(0.0);
         // Ajoute le fichier au chemin
         isDir(event.target.getAttribute("data-path"), false);
         // Render
@@ -73,15 +73,17 @@ window.addEventListener("click", (event) => {
         isDir(event.target.getAttribute("data-path"), true);
 
     } else if (containsClass("home")) { // Si click sur le bouton accueil
-        transitionOpacity(0.0);
+        if (url_array.length > 1) {
+            transitionOpacity(0.0);
+        }
         url_array = ["."];
         url_array_stock = ["."];
         renderResponse(".");
     } else if (containsClass("back")) { // Si click sur le bouton précédent
-        transitionOpacity(0.0);
         if (url_array.length > 1) {
 
             url_array.pop();
+            transitionOpacity(0.0);
         }
         // if (url_array.length == 2) {
         //     url_array_stock = ["."];
