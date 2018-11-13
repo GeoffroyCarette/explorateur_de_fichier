@@ -1,6 +1,7 @@
 @media (min-width: 576px) and (max-width: 767px) {
     .background_nav {
-        height: 5rem;
+        height: 102px;
+
         .div_path::-webkit-scrollbar {
             display: none;
         }
@@ -8,28 +9,45 @@
         .div_path {
             overflow-x: scroll;
             margin: auto;
-            z-index: 1;
+            padding-bottom: 1rem;
+            width: 80%;
         }
-    }
 
-    .aside_style {
-        display: none;
-    }
+        .center_top {
+            img {
+                width: 30px;
+                padding-top: 1rem;
+                padding-bottom: 0.5rem;
+            }
 
-    .explo_style {
-        max-height: 59vh;
-        border-bottom-left-radius: 18px;
-        margin-top: -101px!important;
-    }
-
-    .center_top {
-        img {
-            width: 30px;
+            margin-top: 0;
         }
     }
 
     .elem {
-        width: 130px;
+        width: 117px;
         max-height: 94px;
+    }
+
+    .aside_style {
+        display: none !important;
+    }
+
+    .explo_style {
+        border-bottom-left-radius: 18px;
+        max-height: 75vh;
+    }
+
+    #grille {
+        justify-content: center;
+    }
+
+    .padding_top_xs {
+        padding-top: 1rem!important;
+        padding-bottom: 1rem!important;
+    }
+
+    .scrollbar{
+        margin-top: 11px!important;
     }
 }
