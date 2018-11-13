@@ -1,12 +1,22 @@
 @media (min-width: 531px) and (max-width: 575px) {
     .background_nav {
-        height: 5rem;
+        height: 102px;
         .div_path::-webkit-scrollbar {
             display: none;
         }
 
         .div_path {
             overflow-x: scroll;
+            padding-bottom: 1rem;
+            width: 60%;
+        }
+
+        .center_top {
+            img {
+                width: 30px!important;
+                padding-top: 1rem;
+                padding-bottom: 0.5rem;
+            }
         }
     }
 
@@ -17,12 +27,7 @@
     .explo_style {
         max-height: 59vh;
         border-bottom-left-radius: 18px;
-    }
-
-    .center_top {
-        img {
-            width: 30px;
-        }
+        margin-top: 11px !important;
     }
 
     .elem {
