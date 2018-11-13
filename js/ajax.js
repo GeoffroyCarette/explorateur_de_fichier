@@ -28,15 +28,12 @@ window.addEventListener("dblclick", (event) => {
         // Ajoute le dossier au chemin
         isDir(event.target.getAttribute("data-path"), false);
         // Render
-        console.log("double clique  : url_array_stock => " + url_array_stock);
-        console.log("double clique  : url_array => " + url_array);
         renderResponse(arrayToUrl(url_array));
     }
 })
 
 // Remplace le double click pour mobile
 window.addEventListener("touchstart", (event) => {
-    transitionOpacity(0.0);
     // S'assure que l'on ne puisse pas double cliquer sur les boutons de navigation et l'arborescence
     if (containsClass("fichier")) {
 
@@ -44,9 +41,6 @@ window.addEventListener("touchstart", (event) => {
         isDir(event.target.getAttribute("data-path"), false);
         // Render
         renderResponse(arrayToUrl(url_array));
-
-        console.log("double clique  : url_array_stock => " + url_array_stock);
-        console.log("double clique  : url_array => " + url_array);
     }
 
 })
@@ -78,9 +72,6 @@ window.addEventListener("click", (event) => {
         // Ajoute l'élément à gauche dans le chemin 
         isDir(event.target.getAttribute("data-path"), true);
 
-        console.log("simple clique : url_array => " + url_array);
-        console.log("simple clique : url_array_stock => " + url_array_stock);
-
     } else if (containsClass("home")) { // Si click sur le bouton accueil
         transitionOpacity(0.0);
         url_array = ["."];
@@ -91,20 +82,16 @@ window.addEventListener("click", (event) => {
         if (url_array.length > 1) {
 
             url_array.pop();
-            console.log("bouton back : url_array => " + url_array);
-            console.log("bouton back : url_array_stock => " + url_array_stock);
         }
         // if (url_array.length == 2) {
         //     url_array_stock = ["."];
         // } 
         renderResponse(arrayToUrl(url_array));
     } else if (containsClass("next")) { // Si click sur le bouton suivant
-        transitionOpacity(0.0);
         // Ne push que s'il y a quelque chose à pusher
         if (url_array.length < url_array_stock.length) { // Vérifie que les deux tableaux ont une taille différente
             url_array.push(url_array_stock[url_array.length]);
-            console.log("bouton next : url_array_stock => " + url_array_stock);
-            console.log("bouton next : url_array => " + url_array);
+            transitionOpacity(0.0);
             renderResponse(arrayToUrl(url_array))
         }
 
