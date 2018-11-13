@@ -88,10 +88,10 @@ window.addEventListener("click", (event) => {
         // } 
         renderResponse(arrayToUrl(url_array));
     } else if (containsClass("next")) { // Si click sur le bouton suivant
-        transitionOpacity(0.0);
         // Ne push que s'il y a quelque chose à pusher
         if (url_array.length < url_array_stock.length) { // Vérifie que les deux tableaux ont une taille différente
             url_array.push(url_array_stock[url_array.length]);
+            transitionOpacity(0.0);
             renderResponse(arrayToUrl(url_array))
         }
 
