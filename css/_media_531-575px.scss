@@ -1,4 +1,4 @@
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 531px) and (max-width: 575px) {
     .background_nav {
         height: 5rem;
         .div_path::-webkit-scrollbar {
@@ -7,8 +7,6 @@
 
         .div_path {
             overflow-x: scroll;
-            margin: auto;
-            z-index: 1;
         }
     }
 
@@ -19,7 +17,6 @@
     .explo_style {
         max-height: 59vh;
         border-bottom-left-radius: 18px;
-        margin-top: -101px!important;
     }
 
     .center_top {
@@ -32,4 +29,5 @@
         width: 130px;
         max-height: 94px;
     }
+
 }
