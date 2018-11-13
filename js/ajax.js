@@ -4,18 +4,21 @@ window.onload = () => { // Au chargement de la page, fais un premier fetch
     renderResponse(".");
 }
 
+// Initialisation
+
 let divPath = document.querySelector(".div_path");
 let url_array = ["."];
 let url_array_stock = [""];
-let previous_path;
-let save_nav = [];
 
-window.addEventListener("dblclick", (event) => { // Si on double click sur un icon, fais un fetch
+// Si on double click sur un icon, fais un fetch
+
+window.addEventListener("dblclick", (event) => {
 
     // S'assure que l'on ne puisse pas double cliquer sur les boutons de navigation et l'arborescence
+
     if (containsClass("fichier")) {
 
-        // Ajoute le fichier au chemin
+        // Ajoute le dossier au chemin
         isDir(event.target.getAttribute("data-path"), false);
         // Render
         renderResponse(arrayToUrl(url_array));
@@ -49,23 +52,25 @@ function arrayToUrl(array) {
     return array.toString().split(",").join("/");
 }
 
-window.addEventListener("click", (event) => { // Si on clique sur un élément à gauche , fais un fetch
+// Fonction au click
+
+window.addEventListener("click", (event) => { 
+    // Si on clique sur un élément à gauche , fais un fetch
     if (containsClass("aside-elem")) {
         // Réinitialise le chemin à la racine
         url_array = ["."];
         url_array_stock = ["."];
         // Ajoute l'élément à gauche dans le chemin 
         isDir(event.target.getAttribute("data-path"), true);
-        // url_array.push(event.target.getAttribute("data-path"));
-        // url_array_stock.push(event.target.getAttribute("data-path"));
+
         console.log("simple clique : url_array => " + url_array);
         console.log("simple clique : url_array_stock => " + url_array_stock);
-        // renderResponse(event.target.getAttribute("data-path"));
-    } else if (containsClass("home")) {
+
+    } else if (containsClass("home")) { // Si click sur le bouton accueil
         url_array = ["."];
         url_array_stock = ["."];
         renderResponse(".");
-    } else if (containsClass("back")) {
+    } else if (containsClass("back")) { // Si click sur le bouton précédent
         if (url_array.length > 1) {
 
             url_array.pop();
@@ -73,9 +78,9 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
             console.log("bouton back : url_array_stock => " + url_array_stock);
         }
         renderResponse(arrayToUrl(url_array));
-    } else if (containsClass("next")) {
+    } else if (containsClass("next")) { // Si click sur le bouton suivant
         // Ne push que s'il y a quelque chose à pusher
-        if (url_array.length < url_array_stock.length) {
+        if (url_array.length < url_array_stock.length) { // Vérifie que les deux tableaux ont une taille différente
             url_array.push(url_array_stock[url_array.length]);
             console.log("bouton next : url_array_stock => " + url_array_stock);
             console.log("bouton next : url_array => " + url_array);
@@ -87,6 +92,8 @@ window.addEventListener("click", (event) => { // Si on clique sur un élément �
 
 })
 
+// Fonction fetch
+
 function renderResponse(data) {
     fetch(`/explorateur_de_fichier/index.php?fichier=${data}`)
         .then((response) => {
@@ -95,7 +102,6 @@ function renderResponse(data) {
         .then((response) => {
             grille = document.querySelector("#grille");
             grille.innerHTML = response.grille;
-            // let shortPath = response.chemin.split("/").splice(4).join("/");
             divPath.innerHTML = response.chemin;
             attributeCorrectIcon();
         })
@@ -107,11 +113,12 @@ function renderResponse(data) {
 // Fonction qui vérifie si la cible possède une extension
 
 function isDir(path, aside) {
-    console.log(path.split("."));
     if (path.split(".").length <= 1) {
         url_array.push(path);
         url_array_stock.push(path);
     }
+
+    // Si click sur l'aside ajouter le chemin au tableau réinitialisé
 
     if (aside) {
         renderResponse(event.target.getAttribute("data-path"));
