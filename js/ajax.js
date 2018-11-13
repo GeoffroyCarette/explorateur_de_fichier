@@ -34,7 +34,6 @@ window.addEventListener("dblclick", (event) => {
 
 // Remplace le double click pour mobile
 window.addEventListener("touchstart", (event) => {
-    transitionOpacity(0.0);
     // S'assure que l'on ne puisse pas double cliquer sur les boutons de navigation et l'arborescence
     if (containsClass("fichier")) {
 
