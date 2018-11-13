@@ -60,6 +60,13 @@ window.addEventListener("click", (event) => {
     for (i = 0; i < allFichier.length; i++) {
         allFichier[i].parentNode.classList.remove("backgroundParent");
     }
+
+    if (containsClass("div_path")) {
+
+        select();
+
+    }
+
     if (event.target.classList.contains("fichier")) {
         event.target.parentNode.classList.add("backgroundParent");
     }
@@ -198,4 +205,11 @@ function transitionOpacity(opac) {
     for (let elem of allElems) {
         elem.style.opacity = opac;
     }
+}
+
+function select() {
+    let range = document.createRange();
+    range.selectNodeContents(document.querySelector(".div_path")); 
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
 }
