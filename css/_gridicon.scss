@@ -44,7 +44,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	background: grey;
-	border-radius: 5px;
+	border-radius: 4px;
 }
 
 /* Handle on hover */
@@ -58,4 +58,10 @@
 	overflow: hidden; 
 	width: 120px; 
 	white-space: nowrap;
+  }
+
+  .backgroundParent {
+	  transition: 0.5s;
+	  background-color: rgb(114, 114, 111);
+	  border-radius: 18px;
   }
