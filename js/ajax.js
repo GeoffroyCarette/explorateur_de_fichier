@@ -113,7 +113,7 @@ window.addEventListener("click", (event) => {
 
 function renderResponse(data) {
     setTimeout(() => {
-        fetch(`/explorateur_de_fichier/index.php?fichier=${data}`)
+        fetch(`/index.php?fichier=${data}`)
             .then((response) => {
                 return response.json()
             })
